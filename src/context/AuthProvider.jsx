@@ -43,7 +43,6 @@ export function AuthProvider({ children }) {
     setChargement(true);
     setErreur(null);
     try {
-      await initialiserCsrf();
       const { data } = await api.post("/login", { email, password, matricule });
       if (data.token) {
         localStorage.setItem("auth_token", data.token);
