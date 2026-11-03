@@ -39,7 +39,7 @@ export default function Register() {
   const [erreur, setErreur] = useState(null);
   const [envoi, setEnvoi] = useState(false);
   const navigate = useNavigate();
-  const { actualiserUtilisateur } = useAuth();
+  const { register } = useAuth();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -54,6 +54,10 @@ export default function Register() {
       setErreur("Le mot de passe doit contenir au moins 8 caractères.");
       return;
     }
+    if (!/[A-Za-z]/.test(form.password) || !/[0-9]/.test(form.password)) {
+      setErreur("Le mot de passe doit contenir au moins une lettre et un chiffre.");
+      return;
+    }
     if (form.password !== form.password_confirmation) {
       setErreur("Les mots de passe ne correspondent pas.");
       return;
@@ -61,18 +65,20 @@ export default function Register() {
 
     setEnvoi(true);
     try {
-      await initialiserCsrf();
-      await api.post("/register", form);
-      await actualiserUtilisateur();
-
+      await register(form);
       navigate("/fonctionnaire", { replace: true });
     } catch (err) {
       const messages = err?.response?.data?.errors;
+      const apiMessage = err?.response?.data?.message;
+      const networkErreur = !err.response
+        ? "Impossible de contacter le serveur backend. Vérifiez que l'API est démarrée."
+        : null;
+
       setErreur(
-        messages
-          ? Object.values(messages).flat().join(" ")
-          : err?.response?.data?.message ||
-              "Une erreur est survenue lors de l'inscription."
+        networkErreur ||
+        (messages ? Object.values(messages).flat().join(" ") : null) ||
+        apiMessage ||
+        "Une erreur est survenue lors de l'inscription."
       );
     } finally {
       setEnvoi(false);

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
 
 const api = axios.create({
   baseURL: `${API_BASE_URL}/api`,
@@ -16,8 +16,12 @@ function lireCookieXsrf() {
   return match ? decodeURIComponent(match[1]) : null;
 }
 
-// Ajoute le jeton CSRF (nécessaire pour les sessions cookie httpOnly)
+// Ajoute le token Bearer et le jeton CSRF
 api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("auth_token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
   const xsrf = lireCookieXsrf();
   if (xsrf) {
     config.headers["X-XSRF-TOKEN"] = xsrf;
@@ -25,12 +29,15 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Récupère le cookie CSRF avant une authentification.
+// Récupère le cookie CSRF avant une authentification si possible.
 // La route sanctum/csrf-cookie est hors du préfixe /api.
-// Inutile de refaire la requête si le jeton XSRF est déjà présent.
 export async function initialiserCsrf() {
-  if (!lireCookieXsrf()) {
-    await axios.get(`${API_BASE_URL}/sanctum/csrf-cookie`, { withCredentials: true });
+  try {
+    if (!lireCookieXsrf()) {
+      await axios.get(`${API_BASE_URL}/sanctum/csrf-cookie`, { withCredentials: true });
+    }
+  } catch {
+    // Si le cookie CSRF échoue (cross-domain), le Bearer token assurera l'authentification.
   }
 }
 
@@ -40,8 +47,9 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const config = error.config;
-    const estProbeSession = config?.url === "/moi";
+    const estProbeSession = config?.url === "/moi" || config?.url?.endsWith("/moi");
     if (error.response?.status === 401 && !estProbeSession) {
+      localStorage.removeItem("auth_token");
       localStorage.removeItem("utilisateur");
       window.location.href = "/login";
       return Promise.reject(error);
@@ -49,8 +57,12 @@ api.interceptors.response.use(
 
     if (error.response?.status === 419 && config && !config._csrfRejoue) {
       config._csrfRejoue = true;
-      await axios.get(`${API_BASE_URL}/sanctum/csrf-cookie`, { withCredentials: true });
-      return api(config);
+      try {
+        await axios.get(`${API_BASE_URL}/sanctum/csrf-cookie`, { withCredentials: true });
+        return api(config);
+      } catch {
+        return Promise.reject(error);
+      }
     }
 
     return Promise.reject(error);
