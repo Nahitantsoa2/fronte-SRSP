@@ -54,7 +54,7 @@ export function AuthProvider({ children }) {
       const apiErrors = err.response?.data?.errors;
       const apiMessage = err.response?.data?.message;
       const networkErreur = !err.response
-        ? "Impossible de contacter le serveur backend (http://127.0.0.1:8000). Vérifiez que 'php artisan serve' tourne bien dans le terminal."
+        ? "Impossible de contacter le serveur backend. Veuillez vérifier votre connexion ou réessayez dans quelques secondes (le serveur est en cours de réveil)."
         : null;
 
       const message =
@@ -89,7 +89,7 @@ export function AuthProvider({ children }) {
       const apiErrors = err.response?.data?.errors;
       const apiMessage = err.response?.data?.message;
       const networkErreur = !err.response
-        ? "Impossible de contacter le serveur backend (http://127.0.0.1:8000). Vérifiez que 'php artisan serve' tourne bien dans le terminal."
+        ? "Impossible de contacter le serveur backend. Veuillez vérifier votre connexion ou réessayez dans quelques secondes (le serveur est en cours de réveil)."
         : null;
 
       const message =
