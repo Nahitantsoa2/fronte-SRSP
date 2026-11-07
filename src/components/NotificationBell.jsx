@@ -9,12 +9,24 @@ export default function NotificationBell() {
   const dropdownRef = useRef(null);
 
   const chargerNotifications = useCallback(() => {
-    api.get("/notifications").then(({ data }) => setNotifications(data)).catch(console.error);
+    // Évite les requêtes inutiles si la fenêtre/l'onglet est en arrière-plan
+    if (typeof document !== "undefined" && document.hidden) return;
+    api
+      .get("/notifications")
+      .then(({ data }) => setNotifications(data))
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
     chargerNotifications();
-    const intervalId = setInterval(() => chargerNotifications(), 30000);
+    const intervalId = setInterval(chargerNotifications, 60000); // 60s pour économiser les ressources
+
+    function handleVisibilityChange() {
+      if (!document.hidden) {
+        chargerNotifications();
+      }
+    }
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -25,6 +37,7 @@ export default function NotificationBell() {
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       clearInterval(intervalId);
     };
   }, [chargerNotifications]);

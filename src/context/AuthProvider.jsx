@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import api, { initialiserCsrf } from "../services/api";
 import { authContext } from "./AuthContext";
 
 export function AuthProvider({ children }) {
   const [utilisateur, setUtilisateur] = useState(() => {
-    const stored = localStorage.getItem("utilisateur");
-    return stored ? JSON.parse(stored) : null;
+    try {
+      const stored = localStorage.getItem("utilisateur");
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
   });
   const [chargement, setChargement] = useState(false);
   const [erreur, setErreur] = useState(null);
 
+  // Vérification de la session active au chargement
   useEffect(() => {
     let annule = false;
     const token = localStorage.getItem("auth_token");
@@ -27,22 +32,25 @@ export function AuthProvider({ children }) {
         localStorage.setItem("utilisateur", JSON.stringify(data));
       })
       .catch((err) => {
-        // Ne déconnecte QUE si le serveur répond explicitement 401 Non autorisé
+        // Ne déconnecte QUE si le serveur répond explicitement 401
+        // (si le serveur est en cours de réveil ou problème réseau, on garde les données locales)
         if (!annule && err?.response?.status === 401) {
           localStorage.removeItem("auth_token");
           localStorage.removeItem("utilisateur");
           setUtilisateur(null);
         }
       });
+
     return () => {
       annule = true;
     };
   }, []);
 
-  async function login(email, password, matricule) {
+  const login = useCallback(async (email, password, matricule) => {
     setChargement(true);
     setErreur(null);
     try {
+      await initialiserCsrf();
       const { data } = await api.post("/login", { email, password, matricule });
       if (data.token) {
         localStorage.setItem("auth_token", data.token);
@@ -68,9 +76,9 @@ export function AuthProvider({ children }) {
     } finally {
       setChargement(false);
     }
-  }
+  }, []);
 
-  async function register(form) {
+  const register = useCallback(async (form) => {
     setChargement(true);
     setErreur(null);
     try {
@@ -103,9 +111,9 @@ export function AuthProvider({ children }) {
     } finally {
       setChargement(false);
     }
-  }
+  }, []);
 
-  async function actualiserUtilisateur() {
+  const actualiserUtilisateur = useCallback(async () => {
     try {
       const { data } = await api.get("/moi");
       localStorage.setItem("utilisateur", JSON.stringify(data));
@@ -114,31 +122,36 @@ export function AuthProvider({ children }) {
     } catch {
       return null;
     }
-  }
+  }, []);
 
-  async function logout() {
+  const logout = useCallback(async () => {
     try {
       await api.post("/logout");
+    } catch {
+      // Ignorer l'erreur réseau éventuelle lors du logout
     } finally {
       localStorage.removeItem("auth_token");
       localStorage.removeItem("utilisateur");
       setUtilisateur(null);
     }
-  }
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      utilisateur,
+      login,
+      register,
+      logout,
+      actualiserUtilisateur,
+      chargement,
+      erreur,
+      setErreur,
+    }),
+    [utilisateur, login, register, logout, actualiserUtilisateur, chargement, erreur]
+  );
 
   return (
-    <authContext.Provider
-      value={{
-        utilisateur,
-        login,
-        register,
-        logout,
-        actualiserUtilisateur,
-        chargement,
-        erreur,
-        setErreur,
-      }}
-    >
+    <authContext.Provider value={value}>
       {children}
     </authContext.Provider>
   );
