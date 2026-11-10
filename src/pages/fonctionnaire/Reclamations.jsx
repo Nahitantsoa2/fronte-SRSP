@@ -8,10 +8,10 @@ import {
 } from "lucide-react";
 
 const STATUS_STYLES = {
-  ouverte:  { bg: 'bg-amber-50 text-amber-700 border-amber-200',       dot: 'bg-amber-500',   label: 'Ouverte' },
-  en_cours: { bg: 'bg-blue-50 text-blue-700 border-blue-200',          dot: 'bg-blue-500',    label: 'En cours' },
-  repondue: { bg: 'bg-emerald-50 text-emerald-700 border-emerald-200', dot: 'bg-emerald-500', label: 'Répondue' },
-  cloturee: { bg: 'bg-gray-100 text-gray-600 border-gray-200',         dot: 'bg-gray-400',    label: 'Clôturée' },
+  ouverte:  { bg: 'bg-amber-50 text-amber-700 border-amber-200', dot: 'bg-amber-500', label: 'Ouverte' },
+  en_cours: { bg: 'bg-brand-50 text-brand-700 border-brand-200', dot: 'bg-brand-500', label: 'En cours' },
+  repondue: { bg: 'bg-brand-100 text-brand-800 border-brand-200', dot: 'bg-brand-700', label: 'Répondue' },
+  cloturee: { bg: 'bg-surface-100 text-surface-600 border-surface-200', dot: 'bg-surface-400', label: 'Clôturée' },
 };
 
 export default function ReclamationsFonctionnaire() {
@@ -144,31 +144,31 @@ export default function ReclamationsFonctionnaire() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-surface-50 flex flex-col">
       <AppHeader
         icon={<MessageSquare size={20} />}
-        iconClass="from-blue-600 to-cyan-500 shadow-blue-500/20"
+        iconClass="from-brand-600 to-brand-500 shadow-brand-500/20"
         title="Messages & Réclamations"
         subtitle="Discutez avec l'administration"
         onBack={() => navigate("/fonctionnaire")}
       />
 
       <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex">
-        <div className="w-full flex overflow-hidden bg-white rounded-2xl border border-gray-100 shadow-sm h-[calc(100vh-9rem)] sm:h-[calc(100vh-7.5rem)] min-h-[520px]">
+        <div className="w-full flex overflow-hidden bg-white rounded-2xl border border-surface-100 shadow-sm h-[calc(100vh-9rem)] sm:h-[calc(100vh-7.5rem)] min-h-[520px]">
 
           {/* Liste des conversations */}
-          <aside className={`w-full sm:w-80 lg:w-96 flex-shrink-0 flex-col border-r border-gray-100 ${vueMobile === "conversation" ? "hidden sm:flex" : "flex"}`}>
-            <div className="px-4 py-3.5 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
-              <h2 className="font-bold text-gray-800 flex items-center gap-2">
-                <Inbox size={18} className="text-gray-500" />
+          <aside className={`w-full sm:w-80 lg:w-96 flex-shrink-0 flex-col border-r border-surface-100 ${vueMobile === "conversation" ? "hidden sm:flex" : "flex"}`}>
+            <div className="px-4 py-3.5 border-b border-surface-100 flex items-center justify-between bg-surface-50/50">
+              <h2 className="font-bold text-surface-800 flex items-center gap-2">
+                <Inbox size={18} className="text-surface-500" />
                 Messages
-                <span className="text-xs font-medium text-gray-400">({reclamations.length})</span>
+                <span className="text-xs font-medium text-surface-400">({reclamations.length})</span>
               </h2>
               <button
                 type="button"
                 onClick={ouvrirNouveau}
                 title="Envoyer un message"
-                className="p-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-sm transition-all"
+                className="p-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white shadow-sm transition-all"
               >
                 <SquarePen size={16} />
               </button>
@@ -177,7 +177,7 @@ export default function ReclamationsFonctionnaire() {
             <div className="flex-1 overflow-y-auto">
               {chargement ? (
                 <div className="flex justify-center items-center py-16">
-                  <div className="w-10 h-10 border-3 border-blue-200 border-t-blue-600 rounded-full animate-spin" />
+                  <div className="w-10 h-10 border-[3px] border-brand-200 border-t-brand-600 rounded-full animate-spin" />
                 </div>
               ) : erreur ? (
                 <div className="flex flex-col items-center justify-center py-16 px-6 text-center text-red-400">
@@ -185,11 +185,11 @@ export default function ReclamationsFonctionnaire() {
                   <p className="font-semibold text-red-500 text-sm">{erreur}</p>
                 </div>
               ) : reclamations.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-16 px-6 text-center text-gray-400">
-                  <div className="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center mb-3">
+                <div className="flex flex-col items-center justify-center py-16 px-6 text-center text-surface-400">
+                  <div className="w-16 h-16 rounded-full bg-surface-50 flex items-center justify-center mb-3">
                     <Inbox size={28} className="opacity-40" />
                   </div>
-                  <p className="font-semibold text-gray-500 text-sm">Aucun message</p>
+                  <p className="font-semibold text-surface-500 text-sm">Aucun message</p>
                   <p className="text-xs mt-1">Utilisez le bouton + pour contacter l'administration</p>
                 </div>
               ) : (
@@ -201,19 +201,19 @@ export default function ReclamationsFonctionnaire() {
                       key={r.id_reclamation}
                       type="button"
                       onClick={() => ouvrirConversation(r.id_reclamation)}
-                      className={`w-full text-left px-4 py-3.5 flex gap-3 border-b border-gray-50 transition-colors ${
-                        actif ? "bg-blue-50/70" : "hover:bg-gray-50"
+                      className={`w-full text-left px-4 py-3.5 flex gap-3 border-b border-surface-50 transition-colors ${
+                        actif ? "bg-brand-50/70" : "hover:bg-surface-50"
                       }`}
                     >
-                      <div className="w-11 h-11 rounded-full bg-gradient-to-br from-slate-600 to-slate-500 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                      <div className="w-11 h-11 rounded-full bg-gradient-to-br from-brand-700 to-brand-500 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
                         <Building2 size={18} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2">
-                          <span className="font-semibold text-sm text-gray-900 truncate">{r.objet}</span>
-                          <span className="text-[11px] text-gray-400 flex-shrink-0">{r.date_creation?.split(" ")[0]}</span>
+                          <span className="font-semibold text-sm text-surface-900 truncate">{r.objet}</span>
+                          <span className="text-[11px] text-surface-400 flex-shrink-0">{r.date_creation?.split(" ")[0]}</span>
                         </div>
-                        <p className="text-xs text-gray-500 truncate mt-0.5">{dernierMessage(r)}</p>
+                        <p className="text-xs text-surface-500 truncate mt-0.5">{dernierMessage(r)}</p>
                         <span className={`inline-flex items-center gap-1 mt-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold border ${st.bg}`}>
                           <span className={`w-1.5 h-1.5 rounded-full ${st.dot}`} />
                           {st.label}
@@ -230,31 +230,31 @@ export default function ReclamationsFonctionnaire() {
           <section className={`flex-1 flex-col min-w-0 ${vueMobile === "conversation" ? "flex" : "hidden sm:flex"}`}>
             {nouveau ? (
               <form onSubmit={envoyerNouveau} className="flex-1 flex flex-col min-h-0">
-                <div className="px-4 py-3 border-b border-gray-100 flex items-center gap-3">
+                <div className="px-4 py-3 border-b border-surface-100 flex items-center gap-3">
                   <button
                     type="button"
                     onClick={() => { setNouveau(false); setVueMobile(active ? "conversation" : "liste"); }}
-                    className="p-2 -ml-2 rounded-lg text-gray-400 hover:bg-gray-100 transition-colors"
+                    className="p-2 -ml-2 rounded-lg text-surface-400 hover:bg-surface-100 transition-colors"
                     title="Retour"
                   >
                     <ArrowLeft size={18} />
                   </button>
-                  <h2 className="font-bold text-sm text-gray-900">Envoyer un message</h2>
+                  <h2 className="font-bold text-sm text-surface-900">Envoyer un message</h2>
                 </div>
 
                 <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-600 to-slate-500 text-white flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-700 to-brand-500 text-white flex items-center justify-center flex-shrink-0">
                       <Building2 size={18} />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-gray-800">Administration</p>
-                      <p className="text-xs text-gray-400">SRSP · Service administratif</p>
+                      <p className="text-sm font-semibold text-surface-800">Administration</p>
+                      <p className="text-xs text-surface-400">SRSP · Service administratif</p>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">Objet *</label>
+                    <label className="block text-xs font-bold text-surface-500 uppercase tracking-wider mb-1.5">Objet *</label>
                     <input
                       name="objet"
                       value={form.objet}
@@ -262,19 +262,19 @@ export default function ReclamationsFonctionnaire() {
                       required
                       maxLength={200}
                       placeholder="Ex: Problème de solde, rectification..."
-                      className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all"
+                      className="w-full px-3.5 py-2.5 bg-surface-50 border border-surface-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent focus:bg-white transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-surface-500 uppercase tracking-wider mb-1.5">
                       Demande concernée (optionnel)
                     </label>
                     <select
                       name="id_demande"
                       value={form.id_demande}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all"
+                      className="w-full px-3.5 py-2.5 bg-surface-50 border border-surface-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent focus:bg-white transition-all"
                     >
                       <option value="">— Aucune —</option>
                       {demandes.map((d) => (
@@ -286,7 +286,7 @@ export default function ReclamationsFonctionnaire() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">Message *</label>
+                    <label className="block text-xs font-bold text-surface-500 uppercase tracking-wider mb-1.5">Message *</label>
                     <textarea
                       name="description"
                       value={form.description}
@@ -294,7 +294,7 @@ export default function ReclamationsFonctionnaire() {
                       required
                       rows={5}
                       placeholder="Écrivez votre message..."
-                      className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all resize-none"
+                      className="w-full px-3.5 py-2.5 bg-surface-50 border border-surface-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent focus:bg-white transition-all resize-none"
                     />
                   </div>
 
@@ -306,11 +306,11 @@ export default function ReclamationsFonctionnaire() {
                   )}
                 </div>
 
-                <div className="border-t border-gray-100 p-3 sm:p-4">
+                <div className="border-t border-surface-100 p-3 sm:p-4">
                   <button
                     type="submit"
                     disabled={envoiNouveau}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white text-sm font-semibold rounded-xl transition-all shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white text-sm font-semibold rounded-xl transition-all shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {envoiNouveau ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
                     {envoiNouveau ? "Envoi en cours..." : "Envoyer"}
@@ -320,21 +320,21 @@ export default function ReclamationsFonctionnaire() {
             ) : active ? (
               <>
                 {/* En-tête conversation */}
-                <div className="px-4 py-3 border-b border-gray-100 flex items-center gap-3 bg-white">
+                <div className="px-4 py-3 border-b border-surface-100 flex items-center gap-3 bg-white">
                   <button
                     type="button"
                     onClick={() => setVueMobile("liste")}
-                    className="sm:hidden p-2 -ml-2 rounded-lg text-gray-400 hover:bg-gray-100 transition-colors"
+                    className="sm:hidden p-2 -ml-2 rounded-lg text-surface-400 hover:bg-surface-100 transition-colors"
                     title="Retour"
                   >
                     <ArrowLeft size={18} />
                   </button>
-                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-slate-600 to-slate-500 text-white flex items-center justify-center flex-shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand-700 to-brand-500 text-white flex items-center justify-center flex-shrink-0">
                     <Building2 size={16} />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="font-bold text-sm text-gray-900 truncate">{active.objet}</p>
-                    <div className="flex items-center gap-2 text-[11px] text-gray-400 flex-wrap">
+                    <p className="font-bold text-sm text-surface-900 truncate">{active.objet}</p>
+                    <div className="flex items-center gap-2 text-[11px] text-surface-400 flex-wrap">
                       <span className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full font-bold border ${(STATUS_STYLES[active.statut] || STATUS_STYLES.ouverte).bg}`}>
                         <span className={`w-1.5 h-1.5 rounded-full ${(STATUS_STYLES[active.statut] || STATUS_STYLES.ouverte).dot}`} />
                         {(STATUS_STYLES[active.statut] || STATUS_STYLES.ouverte).label}
@@ -349,7 +349,7 @@ export default function ReclamationsFonctionnaire() {
                 </div>
 
                 {/* Fil de messages */}
-                <div className="flex-1 overflow-y-auto px-4 py-5 space-y-2.5 bg-gray-50/50">
+                <div className="flex-1 overflow-y-auto px-4 py-5 space-y-2.5 bg-surface-50/50">
                   {(active.messages || []).map((m) => {
                     const moi = m.auteur?.role === "fonctionnaire";
                     const boutonSuppr = (
@@ -357,7 +357,7 @@ export default function ReclamationsFonctionnaire() {
                         type="button"
                         onClick={() => setSupprCible({ ...m, moi })}
                         title="Supprimer"
-                        className="flex-shrink-0 p-1.5 rounded-full text-gray-300 hover:text-red-500 hover:bg-red-50 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-all"
+                        className="flex-shrink-0 p-1.5 rounded-full text-surface-300 hover:text-red-500 hover:bg-red-50 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-all"
                       >
                         <Trash2 size={14} />
                       </button>
@@ -367,11 +367,11 @@ export default function ReclamationsFonctionnaire() {
                         {moi && boutonSuppr}
                         <div className={`max-w-[78%] px-3.5 py-2 rounded-2xl shadow-sm ${
                           moi
-                            ? "bg-gradient-to-br from-blue-600 to-cyan-500 text-white rounded-br-md"
-                            : "bg-white text-gray-800 border border-gray-100 rounded-bl-md"
+                            ? "bg-gradient-to-br from-brand-600 to-brand-500 text-white rounded-br-md"
+                            : "bg-white text-surface-800 border border-surface-100 rounded-bl-md"
                         }`}>
                           <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">{m.contenu}</p>
-                          <p className={`text-[10px] mt-1 text-right ${moi ? "text-blue-100/90" : "text-gray-400"}`}>
+                          <p className={`text-[10px] mt-1 text-right ${moi ? "text-brand-100/90" : "text-surface-400"}`}>
                             {m.date_envoi}
                           </p>
                         </div>
@@ -383,9 +383,9 @@ export default function ReclamationsFonctionnaire() {
                 </div>
 
                 {/* Zone de saisie */}
-                <div className="border-t border-gray-100 bg-white px-3 sm:px-4 py-3">
+                <div className="border-t border-surface-100 bg-white px-3 sm:px-4 py-3">
                   {active.statut === "cloturee" ? (
-                    <p className="text-xs text-gray-400 italic flex items-center justify-center gap-1.5">
+                    <p className="text-xs text-surface-400 italic flex items-center justify-center gap-1.5">
                       <Lock size={12} /> Cette réclamation est clôturée.
                     </p>
                   ) : (
@@ -405,14 +405,14 @@ export default function ReclamationsFonctionnaire() {
                             }
                           }}
                           placeholder="Votre message..."
-                          className="flex-1 resize-none max-h-32 px-4 py-2.5 bg-gray-100 border border-transparent rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                          className="flex-1 resize-none max-h-32 px-4 py-2.5 bg-surface-100 border border-transparent rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all"
                         />
                         <button
                           type="button"
                           onClick={() => envoyerReponse(activeId)}
                           disabled={envoiId === activeId || !(reponses[activeId] || "").trim()}
                           title="Envoyer"
-                          className="w-11 h-11 flex-shrink-0 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white flex items-center justify-center shadow-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                          className="w-11 h-11 flex-shrink-0 rounded-full bg-gradient-to-br from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white flex items-center justify-center shadow-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                         >
                           {envoiId === activeId ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
                         </button>
@@ -427,16 +427,16 @@ export default function ReclamationsFonctionnaire() {
                 </div>
               </>
             ) : (
-              <div className="flex-1 flex flex-col items-center justify-center text-gray-400 p-8">
-                <div className="w-20 h-20 rounded-full bg-gray-50 flex items-center justify-center mb-4">
+              <div className="flex-1 flex flex-col items-center justify-center text-surface-400 p-8">
+                <div className="w-20 h-20 rounded-full bg-surface-50 flex items-center justify-center mb-4">
                   <MessageSquare size={36} className="opacity-40" />
                 </div>
-                <p className="font-semibold text-gray-500">Aucune conversation</p>
+                <p className="font-semibold text-surface-500">Aucune conversation</p>
                 <p className="text-sm mt-1 text-center">Sélectionnez un message ou démarrez une nouvelle discussion</p>
                 <button
                   type="button"
                   onClick={ouvrirNouveau}
-                  className="mt-5 inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white text-sm font-semibold rounded-xl shadow-sm transition-all"
+                  className="mt-5 inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white text-sm font-semibold rounded-xl shadow-sm transition-all"
                 >
                   <SquarePen size={16} /> Envoyer un message
                 </button>
@@ -456,15 +456,15 @@ export default function ReclamationsFonctionnaire() {
             className="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden animate-pop-in"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="px-5 py-4 border-b border-gray-100 flex items-start justify-between gap-3 bg-gray-50/50">
+            <div className="px-5 py-4 border-b border-surface-100 flex items-start justify-between gap-3 bg-surface-50/50">
               <div className="min-w-0">
-                <h3 className="font-bold text-gray-900 text-sm">Supprimer le message</h3>
-                <p className="text-xs text-gray-500 mt-0.5 truncate">« {supprCible.contenu} »</p>
+                <h3 className="font-bold text-surface-900 text-sm">Supprimer le message</h3>
+                <p className="text-xs text-surface-500 mt-0.5 truncate">« {supprCible.contenu} »</p>
               </div>
               <button
                 type="button"
                 onClick={() => setSupprCible(null)}
-                className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 flex-shrink-0"
+                className="p-1.5 rounded-lg hover:bg-surface-100 text-surface-400 flex-shrink-0"
               >
                 <X size={18} />
               </button>
@@ -475,14 +475,14 @@ export default function ReclamationsFonctionnaire() {
                 type="button"
                 disabled={supprEnvoi}
                 onClick={() => supprimerMessage(supprCible, "moi")}
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl border border-gray-200 hover:bg-gray-50 text-left transition-all disabled:opacity-50"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl border border-surface-200 hover:bg-surface-50 text-left transition-all disabled:opacity-50"
               >
-                <span className="w-9 h-9 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center flex-shrink-0">
+                <span className="w-9 h-9 rounded-full bg-surface-100 text-surface-500 flex items-center justify-center flex-shrink-0">
                   <Trash2 size={16} />
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold text-gray-800">Supprimer pour moi</span>
-                  <span className="block text-xs text-gray-400">Masqué uniquement pour vous</span>
+                  <span className="block text-sm font-semibold text-surface-800">Supprimer pour moi</span>
+                  <span className="block text-xs text-surface-400">Masqué uniquement pour vous</span>
                 </span>
               </button>
 
@@ -509,7 +509,7 @@ export default function ReclamationsFonctionnaire() {
                 type="button"
                 disabled={supprEnvoi}
                 onClick={() => setSupprCible(null)}
-                className="w-full px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-600 text-sm font-semibold rounded-xl transition-all disabled:opacity-50"
+                className="w-full px-4 py-2.5 bg-surface-100 hover:bg-surface-200 text-surface-600 text-sm font-semibold rounded-xl transition-all disabled:opacity-50"
               >
                 Annuler
               </button>

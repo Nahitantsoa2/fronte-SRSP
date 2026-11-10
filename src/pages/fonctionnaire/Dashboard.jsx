@@ -10,15 +10,15 @@ export default function DashboardFonctionnaire() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-surface-50 flex flex-col">
       {/* Navbar */}
       <AppHeader
         icon={<FileText size={22} />}
-        iconClass="from-blue-600 to-blue-500 shadow-blue-500/20"
+        iconClass="from-brand-600 to-brand-500 shadow-brand-500/20"
         title={`Bonjour, ${utilisateur?.prenom ?? ""}`}
         titleClass="text-lg sm:text-xl"
         subtitle={
-          <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full">
+          <span className="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-0.5 rounded-full">
             Fonctionnaire
           </span>
         }
@@ -26,28 +26,28 @@ export default function DashboardFonctionnaire() {
           <>
             <button
               onClick={() => navigate("/fonctionnaire/nouvelle-demande")}
-              className="flex items-center gap-2 bg-blue-50 text-blue-700 hover:bg-blue-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-blue-200"
+              className="flex items-center gap-2 bg-brand-50 text-brand-700 hover:bg-brand-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-brand-200"
             >
               <ClipboardList size={18} />
               <span className="hidden sm:inline">Nouvelle demande</span>
             </button>
             <button
               onClick={() => navigate("/fonctionnaire/informations")}
-              className="flex items-center gap-2 bg-cyan-50 text-cyan-700 hover:bg-cyan-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-cyan-200"
+              className="flex items-center gap-2 bg-brand-50 text-brand-700 hover:bg-brand-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-brand-200"
             >
               <Info size={18} />
               <span className="hidden sm:inline">Informations</span>
             </button>
             <button
               onClick={() => navigate("/fonctionnaire/reclamations")}
-              className="flex items-center gap-2 bg-white text-gray-600 hover:bg-gray-50 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-gray-200"
+              className="flex items-center gap-2 bg-white text-surface-600 hover:bg-surface-50 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-surface-200"
             >
               <MessageSquare size={18} />
               <span className="hidden sm:inline">Messages</span>
             </button>
             <button
               onClick={() => navigate("/fonctionnaire/chat-ia")}
-              className="flex items-center gap-2 bg-violet-50 text-violet-700 hover:bg-violet-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-violet-200"
+              className="flex items-center gap-2 bg-brand-50 text-brand-700 hover:bg-brand-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-brand-200"
             >
               <MessageSquare size={18} />
               <span className="hidden sm:inline">Discuter avec l'IA</span>

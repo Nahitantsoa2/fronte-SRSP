@@ -61,15 +61,15 @@ export default function DashboardAdmin() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-surface-50 flex flex-col">
       {/* Navbar */}
       <AppHeader
         icon={<Shield size={22} />}
-        iconClass="from-purple-600 to-indigo-600 shadow-purple-500/20"
+        iconClass="from-brand-700 to-brand-500 shadow-brand-500/20"
         title={`Bonjour, ${utilisateur?.prenom ?? ""}`}
         titleClass="text-lg sm:text-xl"
         subtitle={
-          <span className="text-xs font-semibold text-purple-600 bg-purple-50 px-2.5 py-0.5 rounded-full">
+          <span className="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-0.5 rounded-full">
             Administrateur
           </span>
         }
@@ -77,28 +77,28 @@ export default function DashboardAdmin() {
           <>
             <button
               onClick={() => navigate("/admin/reclamations")}
-              className="flex items-center gap-2 bg-white text-gray-600 hover:bg-gray-50 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-gray-200"
+              className="flex items-center gap-2 bg-white text-surface-600 hover:bg-surface-50 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-surface-200"
             >
               <Mail size={18} />
               <span className="hidden sm:inline">Messages</span>
             </button>
             <button
               onClick={() => navigate("/admin/import-suivi")}
-              className="flex items-center gap-2 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-emerald-200"
+              className="flex items-center gap-2 bg-brand-50 text-brand-700 hover:bg-brand-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-brand-200"
             >
               <FileSpreadsheet size={18} />
               <span className="hidden sm:inline">Import suivi</span>
             </button>
             <button
               onClick={() => navigate("/admin/informations")}
-              className="flex items-center gap-2 bg-cyan-50 text-cyan-700 hover:bg-cyan-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-cyan-200"
+              className="flex items-center gap-2 bg-brand-50 text-brand-700 hover:bg-brand-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-brand-200"
             >
               <Info size={18} />
               <span className="hidden sm:inline">Informations</span>
             </button>
             <button
               onClick={() => navigate("/admin/statistiques")}
-              className="flex items-center gap-2 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-indigo-200"
+              className="flex items-center gap-2 bg-brand-50 text-brand-700 hover:bg-brand-100 px-2.5 sm:px-4 py-2 rounded-xl transition-all font-semibold text-sm border border-brand-200"
             >
               <BarChart3 size={18} />
               <span className="hidden sm:inline">Statistiques</span>
@@ -111,72 +111,72 @@ export default function DashboardAdmin() {
 
         {/* Stats Row */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white rounded-2xl border border-surface-100 p-5 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-                <Users size={20} className="text-blue-600" />
+              <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+                <Users size={20} className="text-brand-600" />
               </div>
-              <span className="text-xs font-medium text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full">Total</span>
+              <span className="text-xs font-medium text-surface-400 bg-surface-50 px-2 py-0.5 rounded-full">Total</span>
             </div>
-            <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
-            <p className="text-sm text-gray-500 mt-0.5">Utilisateurs</p>
+            <p className="text-2xl font-bold text-surface-900">{stats.total}</p>
+            <p className="text-sm text-surface-500 mt-0.5">Utilisateurs</p>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white rounded-2xl border border-surface-100 p-5 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-3">
-              <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
-                <Briefcase size={20} className="text-indigo-600" />
+              <div className="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center">
+                <Briefcase size={20} className="text-brand-700" />
               </div>
-              <span className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Actifs</span>
+              <span className="text-xs font-medium text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full">Actifs</span>
             </div>
-            <p className="text-2xl font-bold text-gray-900">{stats.fonctionnaires}</p>
-            <p className="text-sm text-gray-500 mt-0.5">Fonctionnaires</p>
+            <p className="text-2xl font-bold text-surface-900">{stats.fonctionnaires}</p>
+            <p className="text-sm text-surface-500 mt-0.5">Fonctionnaires</p>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white rounded-2xl border border-surface-100 p-5 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
-                <Shield size={20} className="text-emerald-600" />
+              <div className="w-10 h-10 rounded-xl bg-surface-100 flex items-center justify-center">
+                <Shield size={20} className="text-surface-700" />
               </div>
-              <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Encadrement</span>
+              <span className="text-xs font-medium text-surface-600 bg-surface-100 px-2 py-0.5 rounded-full">Encadrement</span>
             </div>
-            <p className="text-2xl font-bold text-gray-900">{stats.chefs}</p>
-            <p className="text-sm text-gray-500 mt-0.5">Chefs de service</p>
+            <p className="text-2xl font-bold text-surface-900">{stats.chefs}</p>
+            <p className="text-sm text-surface-500 mt-0.5">Chefs de service</p>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white rounded-2xl border border-surface-100 p-5 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-3">
               <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
                 <Shield size={20} className="text-amber-600" />
               </div>
               <span className="text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">Admin</span>
             </div>
-            <p className="text-2xl font-bold text-gray-900">{stats.admins}</p>
-            <p className="text-sm text-gray-500 mt-0.5">Administrateurs</p>
+            <p className="text-2xl font-bold text-surface-900">{stats.admins}</p>
+            <p className="text-sm text-surface-500 mt-0.5">Administrateurs</p>
           </div>
         </div>
 
         {/* Table Section */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <h2 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-              <Users size={20} className="text-purple-500" />
+        <div className="bg-white rounded-2xl border border-surface-100 shadow-sm overflow-hidden">
+          <div className="px-6 py-4 border-b border-surface-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <h2 className="text-lg font-bold text-surface-800 flex items-center gap-2">
+              <Users size={20} className="text-brand-500" />
               Tous les utilisateurs
             </h2>
 
             <div className="flex items-center gap-3">
               <div className="relative">
-                <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-surface-400" />
                 <input
                   type="text"
                   placeholder="Rechercher..."
-                  className="pl-9 pr-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent w-full sm:w-56"
+                  className="pl-9 pr-4 py-2 border border-surface-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent w-full sm:w-56"
                   value={recherche}
                   onChange={(e) => setRecherche(e.target.value)}
                 />
               </div>
               <select
-                className="border border-gray-200 rounded-xl text-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white"
+                className="border border-surface-200 rounded-xl text-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white"
                 value={filtreRole}
                 onChange={(e) => setFiltreRole(e.target.value)}
               >
@@ -192,12 +192,12 @@ export default function DashboardAdmin() {
             {chargement ? (
               <div className="flex justify-center items-center py-16">
                 <div className="flex flex-col items-center gap-3">
-                  <div className="w-10 h-10 border-3 border-purple-200 border-t-purple-600 rounded-full animate-spin" />
-                  <p className="text-sm text-gray-400">Chargement...</p>
+                  <div className="w-10 h-10 border-[3px] border-brand-200 border-t-brand-600 rounded-full animate-spin" />
+                  <p className="text-sm text-surface-400">Chargement...</p>
                 </div>
               </div>
             ) : utilisateursFiltres.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-16 text-gray-400">
+              <div className="flex flex-col items-center justify-center py-16 text-surface-400">
                 <Users size={48} className="mb-3 opacity-40" />
                 <p className="font-medium">Aucun utilisateur trouvé</p>
                 <p className="text-sm mt-1">Essayez de modifier vos filtres</p>
@@ -205,53 +205,53 @@ export default function DashboardAdmin() {
             ) : (
               <table className="w-full">
                 <thead>
-                  <tr className="bg-gray-50/80">
-                    <th className="text-left px-6 py-3.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  <tr className="bg-surface-50/80">
+                    <th className="text-left px-6 py-3.5 text-xs font-semibold text-surface-500 uppercase tracking-wider">
                       Utilisateur
                     </th>
-                    <th className="text-left px-6 py-3.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3.5 text-xs font-semibold text-surface-500 uppercase tracking-wider">
                       Email
                     </th>
-                    <th className="text-left px-6 py-3.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3.5 text-xs font-semibold text-surface-500 uppercase tracking-wider">
                       Rôle
                     </th>
-                    <th className="text-left px-6 py-3.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3.5 text-xs font-semibold text-surface-500 uppercase tracking-wider">
                       Service
                     </th>
-                    <th className="text-right px-6 py-3.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    <th className="text-right px-6 py-3.5 text-xs font-semibold text-surface-500 uppercase tracking-wider">
                       Action
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-50">
+                <tbody className="divide-y divide-surface-50">
                   {utilisateursFiltres.map((u) => (
-                    <tr key={u.id_utilisateur} className="hover:bg-gray-50/50 transition-colors">
+                    <tr key={u.id_utilisateur} className="hover:bg-surface-50/50 transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center text-white text-sm font-bold shadow-sm">
+                          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand-700 to-brand-500 flex items-center justify-center text-white text-sm font-bold shadow-sm">
                             {u.prenom?.[0]}{u.nom?.[0]}
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 text-sm">
+                            <p className="font-semibold text-surface-900 text-sm">
                               {u.prenom} {u.nom}
                             </p>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="flex items-center gap-1.5 text-sm text-gray-600">
-                          <Mail size={14} className="text-gray-400" />
+                        <div className="flex items-center gap-1.5 text-sm text-surface-600">
+                          <Mail size={14} className="text-surface-400" />
                           {u.email}
                         </div>
                       </td>
                       <td className="px-6 py-4">
                         <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${
-                          COULEURS_ROLE[u.role] || 'bg-indigo-50 text-indigo-700 border border-indigo-200'
+                          COULEURS_ROLE[u.role] || 'bg-brand-50 text-brand-700 border border-brand-200'
                         }`}>
                           {libelleRole(u.role)}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                      <td className="px-6 py-4 text-sm text-surface-600">
                         {u.service?.nom_service || '—'}
                       </td>
                       <td className="px-6 py-4 text-right">
@@ -260,7 +260,7 @@ export default function DashboardAdmin() {
                             onClick={() => supprimerUtilisateur(u)}
                             disabled={suppressionId === u.id_utilisateur}
                             title="Supprimer"
-                            className="p-2 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 transition-all disabled:opacity-40"
+                            className="p-2 rounded-lg text-surface-400 hover:text-red-600 hover:bg-red-50 transition-all disabled:opacity-40"
                           >
                             <Trash2 size={16} />
                           </button>

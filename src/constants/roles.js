@@ -6,8 +6,8 @@ export const ROLES = {
 
 export const COULEURS_ROLE = {
   administrateur: "bg-amber-50 text-amber-700 border border-amber-200",
-  chef_service: "bg-emerald-50 text-emerald-700 border border-emerald-200",
-  fonctionnaire: "bg-indigo-50 text-indigo-700 border border-indigo-200",
+  chef_service: "bg-brand-100 text-brand-800 border border-brand-200",
+  fonctionnaire: "bg-brand-50 text-brand-700 border border-brand-200",
 };
 
 export const REDIRECTIONS_ROLE = {

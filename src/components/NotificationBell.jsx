@@ -71,7 +71,7 @@ export default function NotificationBell() {
         onClick={() => setOuvert(!ouvert)}
         title="Notifications"
       >
-        <Bell size={20} className="text-gray-500" />
+        <Bell size={20} className="text-surface-500" />
         {nonLues > 0 && (
           <span className="notification-badge">
             {nonLues > 9 ? '9+' : nonLues}

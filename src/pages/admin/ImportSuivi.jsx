@@ -160,21 +160,21 @@ export default function ImportSuivi() {
   }, [dossiersFiltres, page]);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-surface-50 flex flex-col">
       {/* Navbar */}
       <AppHeader
         icon={<FileSpreadsheet size={20} />}
-        iconClass="from-purple-600 to-indigo-500 shadow-purple-500/20"
+        iconClass="from-brand-600 to-brand-500 shadow-brand-500/20"
         title="Import &amp; Suivi des dossiers"
         subtitle="Colonnes requises : Localiter, chap, im, cmv"
         onBack={() => navigate("/admin")}
         extra={
           <button
             onClick={telechargerModele}
-            className="flex items-center gap-2 bg-white text-gray-700 hover:bg-gray-50 px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-semibold shadow-sm transition"
+            className="flex items-center gap-2 bg-white text-surface-700 hover:bg-surface-50 px-3 py-1.5 rounded-xl border border-surface-200 text-xs font-semibold shadow-sm transition"
             title="Télécharger un modèle Excel ou CSV"
           >
-            <Download size={14} className="text-purple-600" />
+            <Download size={14} className="text-brand-600" />
             <span className="hidden sm:inline">Modèle (CSV)</span>
           </button>
         }
@@ -183,34 +183,34 @@ export default function ImportSuivi() {
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
 
         {/* Bannière explicative des colonnes */}
-        <div className="bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-blue-500/10 border border-purple-200/60 rounded-2xl p-5 shadow-sm">
+        <div className="bg-gradient-to-r from-brand-500/10 via-brand-500/10 to-brand-500/10 border border-brand-200/60 rounded-2xl p-5 shadow-sm">
           <div className="flex items-start gap-3">
-            <div className="p-2 bg-purple-600 text-white rounded-xl flex-shrink-0 mt-0.5">
+            <div className="p-2 bg-brand-600 text-white rounded-xl flex-shrink-0 mt-0.5">
               <HelpCircle size={18} />
             </div>
             <div className="flex-1">
-              <h3 className="text-sm font-bold text-gray-900">
+              <h3 className="text-sm font-bold text-surface-900">
                 Colonnes obligatoires à remplir dans le fichier Excel / CSV :
               </h3>
-              <p className="text-xs text-gray-600 mt-1">
+              <p className="text-xs text-surface-600 mt-1">
                 Le système prend désormais en charge ces 4 champs, que ce soit via importation de fichier ou via la saisie directe :
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-3">
-                <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border border-purple-100 text-center">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-purple-600 block">Champ 1</span>
-                  <span className="text-xs font-bold text-gray-800">Localiter / Localité</span>
+                <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border border-brand-100 text-center">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-brand-600 block">Champ 1</span>
+                  <span className="text-xs font-bold text-surface-800">Localiter / Localité</span>
                 </div>
-                <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border border-purple-100 text-center">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-purple-600 block">Champ 2</span>
-                  <span className="text-xs font-bold text-gray-800">chap (Chapitre)</span>
+                <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border border-brand-100 text-center">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-brand-600 block">Champ 2</span>
+                  <span className="text-xs font-bold text-surface-800">chap (Chapitre)</span>
                 </div>
-                <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border border-purple-100 text-center">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-purple-600 block">Champ 3</span>
-                  <span className="text-xs font-bold text-gray-800">im (Matricule IM)</span>
+                <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border border-brand-100 text-center">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-brand-600 block">Champ 3</span>
+                  <span className="text-xs font-bold text-surface-800">im (Matricule IM)</span>
                 </div>
-                <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border border-purple-100 text-center">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-purple-600 block">Champ 4</span>
-                  <span className="text-xs font-bold text-gray-800">cmv (Code Mouvement)</span>
+                <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border border-brand-100 text-center">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-brand-600 block">Champ 4</span>
+                  <span className="text-xs font-bold text-surface-800">cmv (Code Mouvement)</span>
                 </div>
               </div>
             </div>
@@ -219,13 +219,13 @@ export default function ImportSuivi() {
 
         {/* État actuel & sélecteur d'onglet */}
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-2 bg-white p-1 rounded-2xl border border-gray-200/80 shadow-sm">
+          <div className="flex items-center gap-2 bg-white p-1 rounded-2xl border border-surface-200/80 shadow-sm">
             <button
               onClick={() => setOnglet("fichier")}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition ${
                 onglet === "fichier"
-                  ? "bg-purple-600 text-white shadow-sm"
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-brand-600 text-white shadow-sm"
+                  : "text-surface-600 hover:text-surface-900"
               }`}
             >
               <Upload size={14} />
@@ -235,8 +235,8 @@ export default function ImportSuivi() {
               onClick={() => setOnglet("manuel")}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition ${
                 onglet === "manuel"
-                  ? "bg-purple-600 text-white shadow-sm"
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-brand-600 text-white shadow-sm"
+                  : "text-surface-600 hover:text-surface-900"
               }`}
             >
               <Plus size={14} />
@@ -245,8 +245,8 @@ export default function ImportSuivi() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-xl border border-gray-200 text-xs font-medium text-gray-600 shadow-sm">
-              <Inbox size={15} className="text-purple-600" />
+            <div className="flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-xl border border-surface-200 text-xs font-medium text-surface-600 shadow-sm">
+              <Inbox size={15} className="text-brand-600" />
               <span>Dossiers : <b>{dossiers.length}</b></span>
             </div>
             {dossiers.length > 0 && (
@@ -266,19 +266,19 @@ export default function ImportSuivi() {
         {onglet === "fichier" && (
           <form
             onSubmit={handleSubmitFichier}
-            className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden animate-fade-in"
+            className="bg-white rounded-2xl border border-surface-100 shadow-sm overflow-hidden animate-fade-in"
           >
-            <div className="px-6 py-4 border-b border-gray-100 bg-gray-50/50 flex items-center justify-between">
+            <div className="px-6 py-4 border-b border-surface-100 bg-surface-50/50 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Upload size={18} className="text-purple-500" />
-                <h2 className="text-base font-bold text-gray-800">
+                <Upload size={18} className="text-brand-500" />
+                <h2 className="text-base font-bold text-surface-800">
                   Fichier Excel ou CSV (Localiter, chap, im, cmv)
                 </h2>
               </div>
               <button
                 type="button"
                 onClick={telechargerModele}
-                className="text-xs font-semibold text-purple-600 hover:text-purple-800 flex items-center gap-1"
+                className="text-xs font-semibold text-brand-600 hover:text-brand-800 flex items-center gap-1"
               >
                 <Download size={13} />
                 Télécharger le modèle
@@ -288,14 +288,14 @@ export default function ImportSuivi() {
             <div className="p-6">
               <label
                 htmlFor="fichier"
-                className="flex flex-col items-center justify-center gap-3 border-2 border-dashed border-gray-200 rounded-2xl px-6 py-10 text-center cursor-pointer hover:border-purple-300 hover:bg-purple-50/30 transition-all"
+                className="flex flex-col items-center justify-center gap-3 border-2 border-dashed border-surface-200 rounded-2xl px-6 py-10 text-center cursor-pointer hover:border-brand-300 hover:bg-brand-50/30 transition-all"
               >
-                <FileSpreadsheet size={38} className="text-purple-500" />
+                <FileSpreadsheet size={38} className="text-brand-500" />
                 <div>
-                  <p className="text-sm font-semibold text-gray-700">
+                  <p className="text-sm font-semibold text-surface-700">
                     {fichier ? fichier.name : "Sélectionner un fichier Excel (.xlsx, .xls) ou .csv"}
                   </p>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-xs text-surface-400 mt-1">
                     Colonnes attendues : <b>Localiter</b> (A), <b>chap</b> (B), <b>im</b> (C), <b>cmv</b> (D)
                   </p>
                 </div>
@@ -316,30 +316,30 @@ export default function ImportSuivi() {
               )}
 
               {resultat && (
-                <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-emerald-700 mb-2">
+                <div className="mt-4 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-brand-700 mb-2">
                     <CheckCircle2 size={16} />
                     Importation réussie !
                   </div>
                   <div className="grid grid-cols-3 gap-3 text-center">
                     <div className="bg-white rounded-xl p-3 shadow-xs">
-                      <p className="text-lg font-bold text-emerald-600">{resultat.ajoutes}</p>
-                      <p className="text-[11px] text-gray-400">Ajoutés</p>
+                      <p className="text-lg font-bold text-brand-600">{resultat.ajoutes}</p>
+                      <p className="text-[11px] text-surface-400">Ajoutés</p>
                     </div>
                     <div className="bg-white rounded-xl p-3 shadow-xs">
-                      <p className="text-lg font-bold text-gray-500">{resultat.ignores}</p>
-                      <p className="text-[11px] text-gray-400">Déjà présents (doublons)</p>
+                      <p className="text-lg font-bold text-surface-500">{resultat.ignores}</p>
+                      <p className="text-[11px] text-surface-400">Déjà présents (doublons)</p>
                     </div>
                     <div className="bg-white rounded-xl p-3 shadow-xs">
-                      <p className="text-lg font-bold text-gray-500">{resultat.invalides}</p>
-                      <p className="text-[11px] text-gray-400">Sans IM</p>
+                      <p className="text-lg font-bold text-surface-500">{resultat.invalides}</p>
+                      <p className="text-[11px] text-surface-400">Sans IM</p>
                     </div>
                   </div>
-                  <p className="text-xs text-emerald-600 mt-3">{resultat.message}</p>
+                  <p className="text-xs text-brand-600 mt-3">{resultat.message}</p>
                   {resultat.notifies > 0 && (
                     <p className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-red-600">
                       <AlertCircle size={13} />
-                      {resultat.notifies} fonctionnaire(s) averti(s) par email (dossier rejeté).
+                      {resultat.notifies} dossier(s) rejeté(s) : notification in-app et email.
                     </p>
                   )}
                 </div>
@@ -348,7 +348,7 @@ export default function ImportSuivi() {
               <button
                 type="submit"
                 disabled={envoi || !fichier}
-                className="mt-6 w-full rounded-xl bg-gradient-to-r from-purple-600 to-indigo-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 flex items-center justify-center gap-2 shadow-sm"
+                className="mt-6 w-full rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 flex items-center justify-center gap-2 shadow-sm"
               >
                 {envoi ? (
                   <>
@@ -370,18 +370,18 @@ export default function ImportSuivi() {
         {onglet === "manuel" && (
           <form
             onSubmit={handleAjoutManuel}
-            className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 animate-fade-in"
+            className="bg-white rounded-2xl border border-surface-100 shadow-sm p-6 animate-fade-in"
           >
-            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
-              <Plus size={18} className="text-purple-500" />
-              <h2 className="text-base font-bold text-gray-800">
+            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-surface-100">
+              <Plus size={18} className="text-brand-500" />
+              <h2 className="text-base font-bold text-surface-800">
                 Saisie manuelle d'un dossier
               </h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                <label className="block text-xs font-semibold text-surface-600 mb-1">
                   Localiter (Localité)
                 </label>
                 <input
@@ -389,12 +389,12 @@ export default function ImportSuivi() {
                   placeholder="Ex : 304 ou Antananarivo"
                   value={formManuel.localite}
                   onChange={(e) => setFormManuel({ ...formManuel, localite: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+                  className="w-full px-3 py-2 border border-surface-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                <label className="block text-xs font-semibold text-surface-600 mb-1">
                   chap (Chapitre)
                 </label>
                 <input
@@ -402,12 +402,12 @@ export default function ImportSuivi() {
                   placeholder="Ex : 01 ou 12"
                   value={formManuel.chap}
                   onChange={(e) => setFormManuel({ ...formManuel, chap: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+                  className="w-full px-3 py-2 border border-surface-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                <label className="block text-xs font-semibold text-surface-600 mb-1">
                   im (Matricule IM) *
                 </label>
                 <input
@@ -416,12 +416,12 @@ export default function ImportSuivi() {
                   placeholder="Ex : 494089"
                   value={formManuel.im}
                   onChange={(e) => setFormManuel({ ...formManuel, im: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+                  className="w-full px-3 py-2 border border-surface-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                <label className="block text-xs font-semibold text-surface-600 mb-1">
                   cmv (Code Mouvement)
                 </label>
                 <input
@@ -429,7 +429,7 @@ export default function ImportSuivi() {
                   placeholder="Ex : 13 ou 02"
                   value={formManuel.cmv}
                   onChange={(e) => setFormManuel({ ...formManuel, cmv: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+                  className="w-full px-3 py-2 border border-surface-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white"
                 />
               </div>
             </div>
@@ -441,7 +441,7 @@ export default function ImportSuivi() {
             )}
 
             {succesManuel && (
-              <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-xs text-emerald-700">
+              <div className="mt-4 rounded-xl border border-brand-200 bg-brand-50 px-4 py-2.5 text-xs text-brand-700">
                 {succesManuel}
               </div>
             )}
@@ -450,7 +450,7 @@ export default function ImportSuivi() {
               <button
                 type="submit"
                 disabled={enregistrementManuel}
-                className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-xl text-sm font-semibold transition disabled:opacity-50 shadow-sm"
+                className="flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-5 py-2 rounded-xl text-sm font-semibold transition disabled:opacity-50 shadow-sm"
               >
                 {enregistrementManuel ? (
                   <>
@@ -469,15 +469,15 @@ export default function ImportSuivi() {
         )}
 
         {/* Section 3 : Tableau des dossiers enregistrés */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <h2 className="text-base font-bold text-gray-800 flex items-center gap-2">
-              <Table size={18} className="text-purple-500" />
+        <div className="bg-white rounded-2xl border border-surface-100 shadow-sm overflow-hidden">
+          <div className="px-6 py-4 border-b border-surface-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <h2 className="text-base font-bold text-surface-800 flex items-center gap-2">
+              <Table size={18} className="text-brand-500" />
               Liste des dossiers enregistrés ({dossiersFiltres.length})
             </h2>
 
             <div className="relative w-full sm:w-72">
-              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-surface-400" />
               <input
                 type="text"
                 placeholder="Rechercher (IM, Localité, chap, cmv)..."
@@ -486,18 +486,18 @@ export default function ImportSuivi() {
                   setRecherche(e.target.value);
                   setPage(1);
                 }}
-                className="w-full pl-9 pr-3 py-1.5 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition"
+                className="w-full pl-9 pr-3 py-1.5 bg-surface-50 border border-surface-200 rounded-xl text-xs text-surface-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition"
               />
             </div>
           </div>
 
           {chargementListe ? (
             <div className="flex flex-col items-center justify-center py-16 gap-3">
-              <Loader2 size={28} className="animate-spin text-purple-600" />
-              <p className="text-xs text-gray-400">Chargement de la liste...</p>
+              <Loader2 size={28} className="animate-spin text-brand-600" />
+              <p className="text-xs text-surface-400">Chargement de la liste...</p>
             </div>
           ) : dossiersFiltres.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-16 text-gray-400">
+            <div className="flex flex-col items-center justify-center py-16 text-surface-400">
               <Inbox size={40} className="mb-2 opacity-30" />
               <p className="text-sm font-medium">Aucun dossier trouvé</p>
               <p className="text-xs mt-1">Importez un fichier Excel ou ajoutez un dossier manuellement ci-dessus.</p>
@@ -506,45 +506,45 @@ export default function ImportSuivi() {
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="bg-gray-50/80 border-b border-gray-100 text-gray-500 uppercase font-semibold">
+                  <tr className="bg-surface-50/80 border-b border-surface-100 text-surface-500 uppercase font-semibold">
                     <th className="px-6 py-3">Localiter</th>
                     <th className="px-6 py-3">Chapitre (chap)</th>
-                    <th className="px-6 py-3 font-bold text-gray-700">Matricule (im)</th>
+                    <th className="px-6 py-3 font-bold text-surface-700">Matricule (im)</th>
                     <th className="px-6 py-3">CMV</th>
                     <th className="px-6 py-3 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-50">
+                <tbody className="divide-y divide-surface-50">
                   {dossiersPage.map((d) => (
-                    <tr key={d.id} className="hover:bg-purple-50/20 transition">
-                      <td className="px-6 py-3.5 font-medium text-gray-700">
+                    <tr key={d.id} className="hover:bg-brand-50/20 transition">
+                      <td className="px-6 py-3.5 font-medium text-surface-700">
                         {d.localite ? (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 font-semibold border border-purple-100">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-brand-50 text-brand-700 font-semibold border border-brand-100">
                             {d.localite}
                           </span>
                         ) : (
-                          <span className="text-gray-300">—</span>
+                          <span className="text-surface-300">—</span>
                         )}
                       </td>
-                      <td className="px-6 py-3.5 text-gray-600">
-                        {d.chap || <span className="text-gray-300">—</span>}
+                      <td className="px-6 py-3.5 text-surface-600">
+                        {d.chap || <span className="text-surface-300">—</span>}
                       </td>
-                      <td className="px-6 py-3.5 font-mono font-bold text-gray-900">
+                      <td className="px-6 py-3.5 font-mono font-bold text-surface-900">
                         {d.im}
                       </td>
-                      <td className="px-6 py-3.5 text-gray-600">
+                      <td className="px-6 py-3.5 text-surface-600">
                         {d.cmv ? (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 font-semibold border border-blue-100">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-brand-50 text-brand-700 font-semibold border border-brand-100">
                             CMV {d.cmv}
                           </span>
                         ) : (
-                          <span className="text-gray-300">—</span>
+                          <span className="text-surface-300">—</span>
                         )}
                       </td>
                       <td className="px-6 py-3.5 text-right">
                         <button
                           onClick={() => supprimerDossier(d.id)}
-                          className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
+                          className="p-1.5 text-surface-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
                           title="Supprimer ce dossier"
                         >
                           <Trash2 size={14} />
@@ -559,7 +559,7 @@ export default function ImportSuivi() {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="px-6 py-3 border-t border-gray-100 bg-gray-50/50 flex items-center justify-between text-xs text-gray-500">
+            <div className="px-6 py-3 border-t border-surface-100 bg-surface-50/50 flex items-center justify-between text-xs text-surface-500">
               <span>
                 Affichage de {(page - 1) * LIGNES_PAR_PAGE + 1} à{" "}
                 {Math.min(page * LIGNES_PAR_PAGE, dossiersFiltres.length)} sur{" "}
@@ -569,17 +569,17 @@ export default function ImportSuivi() {
                 <button
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
                   disabled={page === 1}
-                  className="px-2.5 py-1 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+                  className="px-2.5 py-1 rounded-lg border border-surface-200 bg-white hover:bg-surface-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
                 >
                   Précédent
                 </button>
-                <span className="font-semibold text-gray-700 px-1">
+                <span className="font-semibold text-surface-700 px-1">
                   {page} / {totalPages}
                 </span>
                 <button
                   onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                   disabled={page === totalPages}
-                  className="px-2.5 py-1 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+                  className="px-2.5 py-1 rounded-lg border border-surface-200 bg-white hover:bg-surface-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
                 >
                   Suivant
                 </button>

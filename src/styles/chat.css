@@ -1,0 +1,356 @@
+/* ============================================================
+   SRSP Assistant IA — Chat & rendu Markdown des réponses
+   Palette officielle : #1E4D3B · #285F4A · #EAF2ED · #F7F9F7
+   ============================================================ */
+
+/* ---------- Conteneur de message ---------- */
+
+.msg-ia {
+  max-width: 100%;
+}
+
+.msg-tools {
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+}
+
+.msg-group:hover .msg-tools {
+  opacity: 1;
+}
+
+/* ---------- Base Markdown ---------- */
+
+.md-content {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--surface-800);
+  overflow-wrap: anywhere;
+}
+
+.md-content > :first-child {
+  margin-top: 0;
+}
+
+.md-content > :last-child {
+  margin-bottom: 0;
+}
+
+.md-paragraph {
+  margin: 0.65rem 0;
+}
+
+.md-strong {
+  font-weight: 700;
+  color: var(--brand-700);
+}
+
+.md-code {
+  display: inline-block;
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+  background: var(--surface-100);
+  border: 1px solid var(--surface-200);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8em;
+  color: var(--brand-800);
+}
+
+.md-link {
+  color: var(--brand-700);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---------- Titres ---------- */
+
+.md-heading {
+  margin: 1.25rem 0 0.55rem;
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--surface-900);
+}
+
+.md-heading--1 {
+  font-size: 1.2rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--surface-200);
+}
+
+.md-heading--2 {
+  font-size: 1.08rem;
+  color: var(--brand-800);
+}
+
+.md-heading--3 {
+  font-size: 0.98rem;
+  color: var(--brand-700);
+}
+
+.md-heading--4 {
+  font-size: 0.9rem;
+  color: var(--surface-700);
+}
+
+/* ---------- Listes ---------- */
+
+.md-list {
+  margin: 0.6rem 0;
+  padding-left: 1.15rem;
+}
+
+.md-list--ordered {
+  list-style: decimal;
+}
+
+.md-list:not(.md-list--ordered) {
+  list-style: none;
+}
+
+.md-list__item {
+  position: relative;
+  margin: 0.3rem 0;
+  padding-left: 0.35rem;
+}
+
+.md-list:not(.md-list--ordered) .md-list__item::before {
+  content: "";
+  position: absolute;
+  left: -0.85rem;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--brand-400);
+}
+
+.md-list--ordered .md-list__item {
+  padding-left: 0.15rem;
+}
+
+/* ---------- Checklists de documents ---------- */
+
+.md-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin: 0.35rem 0;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--surface-200);
+  border-radius: 10px;
+  background: var(--surface-50);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.md-check:hover {
+  border-color: var(--brand-200);
+  background: var(--brand-50);
+}
+
+.md-check__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.2rem;
+  border: 1.5px solid var(--brand-300);
+  border-radius: 5px;
+  background: var(--surface-0);
+  color: var(--brand-700);
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.md-check--done .md-check__box {
+  background: var(--brand-600);
+  border-color: var(--brand-600);
+  color: #ffffff;
+}
+
+.md-check--done > span:last-child {
+  color: var(--surface-500);
+  text-decoration: line-through;
+  text-decoration-color: var(--surface-300);
+}
+
+/* ---------- Citations / encadrés ---------- */
+
+.md-quote {
+  margin: 0.8rem 0;
+  padding: 0.7rem 0.9rem;
+  border-left: 3px solid var(--brand-500);
+  border-radius: 0 10px 10px 0;
+  background: var(--brand-50);
+  color: var(--surface-700);
+  font-size: 0.875rem;
+}
+
+/* ---------- Tableaux ---------- */
+
+.md-table-wrap {
+  margin: 0.8rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--surface-200);
+  border-radius: 12px;
+  background: var(--surface-0);
+}
+
+.md-table {
+  width: 100%;
+  min-width: 340px;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.md-table th {
+  padding: 0.55rem 0.75rem;
+  background: var(--brand-50);
+  color: var(--brand-800);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--brand-200);
+  white-space: nowrap;
+}
+
+.md-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--surface-100);
+  color: var(--surface-700);
+  vertical-align: top;
+}
+
+.md-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.md-table tbody tr:hover {
+  background: var(--brand-50);
+}
+
+/* ---------- Séparateur ---------- */
+
+.md-hr {
+  margin: 1rem 0;
+  border: 0;
+  height: 1px;
+  background: var(--surface-200);
+}
+
+/* ============================================================
+   Mode sombre
+   ============================================================ */
+
+body.dark .md-content {
+  color: #d7e5dc;
+}
+
+body.dark .md-strong {
+  color: #9ed3b8;
+}
+
+body.dark .md-code {
+  background: #12221a;
+  border-color: #2f4d3e;
+  color: #bfe3cf;
+}
+
+body.dark .md-link {
+  color: #9ed3b8;
+}
+
+body.dark .md-heading {
+  color: #f2f7f4;
+}
+
+body.dark .md-heading--1 {
+  border-bottom-color: #2a4438;
+}
+
+body.dark .md-heading--2,
+body.dark .md-heading--3,
+body.dark .md-heading--4 {
+  color: #bfe3cf;
+}
+
+body.dark .md-list:not(.md-list--ordered) .md-list__item::before {
+  background: #5c9078;
+}
+
+body.dark .md-check {
+  background: #12221a;
+  border-color: #2f4d3e;
+}
+
+body.dark .md-check:hover {
+  background: #172a21;
+  border-color: #3a5a49;
+}
+
+body.dark .md-check__box {
+  background: #16281f;
+  border-color: #3a5a49;
+  color: #bfe3cf;
+}
+
+body.dark .md-check--done .md-check__box {
+  background: #285f4a;
+  border-color: #285f4a;
+  color: #ffffff;
+}
+
+body.dark .md-check--done > span:last-child {
+  color: #8fa79a;
+  text-decoration-color: #3a5a49;
+}
+
+body.dark .md-quote {
+  background: #172a21;
+  border-left-color: #5c9078;
+  color: #cfe0d5;
+}
+
+body.dark .md-table-wrap {
+  border-color: #2a4438;
+  background: #16281f;
+}
+
+body.dark .md-table th {
+  background: #172a21;
+  color: #bfe3cf;
+  border-bottom-color: #2f4d3e;
+}
+
+body.dark .md-table td {
+  border-bottom-color: #21382b;
+  color: #cfe0d5;
+}
+
+body.dark .md-table tbody tr:hover {
+  background: rgba(40, 95, 74, 0.18);
+}
+
+body.dark .md-hr {
+  background: #2a4438;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 640px) {
+  .md-content {
+    font-size: 0.85rem;
+  }
+
+  .md-heading--1 {
+    font-size: 1.08rem;
+  }
+
+  .md-table {
+    font-size: 0.78rem;
+  }
+}

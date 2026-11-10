@@ -7,17 +7,17 @@ export default function NouvelleDemande() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-surface-50 flex flex-col">
       <AppHeader
         icon={<ClipboardList size={20} />}
-        iconClass="from-blue-600 to-blue-500 shadow-blue-500/20"
+        iconClass="from-brand-600 to-brand-500 shadow-brand-500/20"
         title="Nouvelle demande"
         subtitle="Remplissez le formulaire puis validez"
         onBack={() => navigate("/fonctionnaire")}
       />
 
       <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-sm border border-surface-100 overflow-hidden">
           <div className="p-6 sm:p-8">
             <NouvelleDemandeManuelle />
           </div>

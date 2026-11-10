@@ -8,7 +8,7 @@
   width: 100% !important;
   height: 100%;
   min-height: 100%;
-  background: #eef2f7;
+  background: #eaf2ed;
   z-index: 0;
 }
 
@@ -42,7 +42,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.5));
+  filter: drop-shadow(0 10px 20px rgba(30, 77, 59, 0.45));
 }
 
 .srsp-pin-core {
@@ -52,7 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #2563eb;
+  background: #1e4d3b;
   border: 2px solid #fff;
   border-radius: 50% 50% 50% 6px;
   transform: rotate(45deg);
@@ -70,7 +70,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(37, 99, 235, 0.35);
+  background: rgba(30, 77, 59, 0.3);
   transform: translate(-50%, 50%);
   animation: srsp-pulse 2s ease-out infinite;
 }
@@ -91,21 +91,21 @@
   font-size: 12px;
   font-weight: 800;
   color: #fff;
-  background: #2563eb;
+  background: #1e4d3b;
   border: 2px solid rgba(255, 255, 255, 0.9);
   padding: 4px 10px;
   border-radius: 10px;
   letter-spacing: 0.3px;
-  box-shadow: 0 8px 18px -6px rgba(37, 99, 235, 0.6);
+  box-shadow: 0 8px 18px -6px rgba(30, 77, 59, 0.5);
   white-space: nowrap;
 }
 
 .leaflet-tooltip.srsp-tooltip::before {
-  border-top-color: #2563eb;
+  border-top-color: #1e4d3b;
 }
 
 body.dark .leaflet-tooltip.srsp-tooltip {
-  border-color: #334155;
+  border-color: #3a5a49;
 }
 
 /* --- Popup --- */
@@ -120,13 +120,13 @@ body.dark .leaflet-tooltip.srsp-tooltip {
   gap: 6px;
   font-weight: 700;
   font-size: 13px;
-  color: #1e293b;
+  color: #26352d;
   margin-bottom: 4px;
 }
 
 .srsp-popup-text {
   font-size: 12px;
-  color: #64748b;
+  color: #78857d;
   line-height: 1.5;
   margin-bottom: 8px;
 }
@@ -135,7 +135,7 @@ body.dark .leaflet-tooltip.srsp-tooltip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #3b82f6;
+  background: #285f4a;
   color: #fff;
   font-size: 12px;
   font-weight: 600;
@@ -146,16 +146,16 @@ body.dark .leaflet-tooltip.srsp-tooltip {
 }
 
 .srsp-popup-btn:hover {
-  background: #2563eb;
+  background: #1e4d3b;
 }
 
 /* --- Dark mode : inverse les tuiles --- */
 .srsp-dark-map .leaflet-tile {
-  filter: brightness(0.6) invert(1) contrast(0.8) hue-rotate(200deg) saturate(0.4) brightness(0.6);
+  filter: brightness(0.6) invert(1) contrast(0.8) hue-rotate(100deg) saturate(0.4) brightness(0.6);
 }
 
 .srsp-dark-map {
-  background: #0f172a !important;
+  background: #0f1f18 !important;
 }
 
 /* --- Contrôles Leaflet cohérents --- */
@@ -170,30 +170,30 @@ body.dark .leaflet-tooltip.srsp-tooltip {
 }
 
 body.dark .leaflet-control-zoom a {
-  background: #1e293b !important;
-  color: #cbd5e1 !important;
-  border-color: #334155 !important;
+  background: #16281f !important;
+  color: #cfe0d5 !important;
+  border-color: #2a4438 !important;
 }
 
 body.dark .leaflet-control-zoom a:hover {
-  background: #334155 !important;
+  background: #21382b !important;
 }
 
 body.dark .leaflet-popup-content-wrapper {
-  background: #1e293b !important;
+  background: #16281f !important;
   box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4) !important;
 }
 
 body.dark .leaflet-popup-tip {
-  background: #1e293b !important;
+  background: #16281f !important;
 }
 
 body.dark .srsp-popup-title {
-  color: #f1f5f9 !important;
+  color: #f2f7f4 !important;
 }
 
 body.dark .srsp-popup-text {
-  color: #94a3b8 !important;
+  color: #a9bdb1 !important;
 }
 
 /* --- Zoom sur mobile : molette --- */

@@ -53,11 +53,10 @@ export default function CreationDemande({ onCreee }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card-item" style={{ flexDirection: "column", alignItems: "stretch", gap: "0.65rem" }}>
+    <form onSubmit={handleSubmit} className="card-item flex-col items-stretch gap-3">
       <div className="card-title">Créer une demande — formulaire manuel</div>
 
-      <select name="id_type_demarche" value={form.id_type_demarche} onChange={handleChange} required
-        style={{ padding: "0.55rem", borderRadius: "8px", border: "1px solid #dcdfe6" }}>
+      <select name="id_type_demarche" value={form.id_type_demarche} onChange={handleChange} required>
         <option value="">-- Choisir le type de démarche --</option>
         {types.map((t) => (
           <option key={t.id_type_demarche} value={t.id_type_demarche}>
@@ -69,23 +68,20 @@ export default function CreationDemande({ onCreee }) {
       <input
         name="nom" placeholder="Nom complet (optionnel)"
         value={form.nom} onChange={handleChange}
-        style={{ padding: "0.55rem", borderRadius: "8px", border: "1px solid #dcdfe6" }}
       />
       <input
         name="matricule" placeholder="Matricule (optionnel)"
         value={form.matricule} onChange={handleChange}
-        style={{ padding: "0.55rem", borderRadius: "8px", border: "1px solid #dcdfe6" }}
       />
       <textarea
         name="motif" placeholder="Motif / précisions (optionnel)" rows={2}
         value={form.motif} onChange={handleChange}
-        style={{ padding: "0.55rem", borderRadius: "8px", border: "1px solid #dcdfe6", fontFamily: "inherit" }}
       />
 
-      {erreur && <p style={{ color: "#c0392b", fontSize: "0.85rem" }}>{erreur}</p>}
-      {succes && <p style={{ color: "#1e8f5f", fontSize: "0.85rem", display: "flex", alignItems: "center", gap: "0.5rem" }}><CheckCircle size={16} /> Demande créée.</p>}
+      {erreur && <p className="text-sm text-red-600">{erreur}</p>}
+      {succes && <p className="text-sm text-brand-700 flex items-center gap-2"><CheckCircle size={16} /> Demande créée.</p>}
 
-      <button className="btn btn-valider" type="submit" disabled={envoi} style={{ alignSelf: "flex-start" }}>
+      <button className="btn btn-valider self-start" type="submit" disabled={envoi}>
         {envoi ? "Envoi..." : "Soumettre la demande"}
       </button>
     </form>

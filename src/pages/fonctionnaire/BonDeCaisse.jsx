@@ -9,7 +9,7 @@ const InputField = ({ label, name, type = 'text', className = '', value, onChang
       name={name}
       value={value}
       onChange={onChange}
-      className={`flex-1 border-b border-black border-dotted bg-transparent focus:outline-none focus:border-blue-500 print:border-black print:placeholder-transparent ${className}`}
+      className={`flex-1 border-b border-black border-dotted bg-transparent focus:outline-none focus:border-brand-500 print:border-black print:placeholder-transparent ${className}`}
       placeholder={`Entrer ${label.toLowerCase()}`}
     />
   </div>
@@ -45,13 +45,13 @@ const BonDeCaisse = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 sm:p-8 flex flex-col items-center font-sans text-gray-800">
+    <div className="min-h-screen bg-surface-100 p-4 sm:p-8 flex flex-col items-center font-sans text-surface-800">
       
       {/* Controls */}
       <div className="mb-6 w-full max-w-[800px] flex justify-end print:hidden">
         <button 
           onClick={handlePrint}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow flex items-center gap-2 transition-colors duration-200"
+          className="bg-brand-600 hover:bg-brand-700 text-white font-bold py-2 px-4 rounded shadow flex items-center gap-2 transition-colors duration-200"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clipRule="evenodd" />
@@ -63,7 +63,7 @@ const BonDeCaisse = () => {
       {/* Paper Container */}
       <div 
         ref={componentRef}
-        className="bg-white w-full max-w-[800px] shadow-lg p-6 sm:p-12 relative border border-gray-200 print:shadow-none print:border-none print:p-12 print:max-w-none print:w-[800px]" 
+        className="bg-white w-full max-w-[800px] shadow-lg p-6 sm:p-12 relative border border-surface-200 print:shadow-none print:border-none print:p-12 print:max-w-none print:w-[800px]" 
         style={{ minHeight: '1050px' }}
       >
         
@@ -89,7 +89,7 @@ const BonDeCaisse = () => {
                 name="daty"
                 value={formData.daty}
                 onChange={handleChange}
-                className="flex-1 border-b border-black border-dotted bg-transparent focus:outline-none focus:border-blue-500 print:border-black"
+                className="flex-1 border-b border-black border-dotted bg-transparent focus:outline-none focus:border-brand-500 print:border-black"
               />
             </div>
             
@@ -155,7 +155,7 @@ const BonDeCaisse = () => {
 
         {/* Footer Note */}
         <div className="absolute bottom-8 sm:bottom-16 left-0 w-full text-center">
-          <p className="font-bold text-sm sm:text-lg uppercase tracking-wide px-4 sm:px-12 leading-relaxed text-gray-700">
+          <p className="font-bold text-sm sm:text-lg uppercase tracking-wide px-4 sm:px-12 leading-relaxed text-surface-700">
             ANY AMIN'NY CISCO IZAY NIASANAREO NO<br/>
             AKANA ILAY BON DE CAISSE TOMPOKO !
           </p>

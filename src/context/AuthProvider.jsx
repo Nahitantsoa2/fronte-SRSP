@@ -78,6 +78,17 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
+  const actualiserUtilisateur = useCallback(async () => {
+    try {
+      const { data } = await api.get("/moi");
+      localStorage.setItem("utilisateur", JSON.stringify(data));
+      setUtilisateur(data);
+      return data;
+    } catch {
+      return null;
+    }
+  }, []);
+
   const register = useCallback(async (form) => {
     setChargement(true);
     setErreur(null);
@@ -111,18 +122,7 @@ export function AuthProvider({ children }) {
     } finally {
       setChargement(false);
     }
-  }, []);
-
-  const actualiserUtilisateur = useCallback(async () => {
-    try {
-      const { data } = await api.get("/moi");
-      localStorage.setItem("utilisateur", JSON.stringify(data));
-      setUtilisateur(data);
-      return data;
-    } catch {
-      return null;
-    }
-  }, []);
+  }, [actualiserUtilisateur]);
 
   const logout = useCallback(async () => {
     try {

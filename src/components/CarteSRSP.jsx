@@ -52,16 +52,16 @@ export default function CarteSRSP() {
   const urlGoogle = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${NOM}, ${NOM_COURT}`)}&ll=${coordsGoogle}`;
 
   return (
-    <div className={`carte-srsp rounded-2xl border border-gray-100 shadow-sm overflow-hidden bg-white transition-all ${pleinEcran ? "carte-srsp-fullscreen" : ""}`}>
+    <div className={`carte-srsp rounded-2xl border border-surface-100 shadow-sm overflow-hidden bg-white transition-all ${pleinEcran ? "carte-srsp-fullscreen" : ""}`}>
       {/* Header */}
-      <div className="px-4 py-3 border-b border-gray-100 bg-gray-50/60 flex items-center justify-between gap-3">
+      <div className="px-4 py-3 border-b border-surface-100 bg-surface-50/60 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white shadow-sm flex-shrink-0">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-600 to-brand-500 flex items-center justify-center text-white shadow-sm flex-shrink-0">
             <MapPin size={18} />
           </div>
           <div className="min-w-0">
-            <h3 className="text-sm font-bold text-gray-900 leading-tight">Localisation SRSP</h3>
-            <p className="text-xs text-gray-500 truncate">{NOM_COURT} · {REGION}</p>
+            <h3 className="text-sm font-bold text-surface-900 leading-tight">Localisation SRSP</h3>
+            <p className="text-xs text-surface-500 truncate">{NOM_COURT} · {REGION}</p>
           </div>
         </div>
 
@@ -70,14 +70,14 @@ export default function CarteSRSP() {
             href={urlGoogle}
             target="_blank"
             rel="noreferrer"
-            className="p-2 rounded-lg text-gray-500 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+            className="p-2 rounded-lg text-surface-500 hover:text-brand-600 hover:bg-brand-50 transition-colors"
             title="Ouvrir dans Google Maps"
           >
             <ExternalLink size={16} />
           </a>
           <button
             onClick={() => setPleinEcran(!pleinEcran)}
-            className="p-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-lg text-surface-500 hover:text-surface-700 hover:bg-surface-100 transition-colors"
             title={pleinEcran ? "Réduire" : "Plein écran"}
           >
             {pleinEcran ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
@@ -130,7 +130,7 @@ export default function CarteSRSP() {
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-[1000] flex items-center gap-2">
           <button
             onClick={() => window.open(urlGoogle, "_blank")}
-            className="flex items-center gap-1.5 bg-white/95 backdrop-blur text-gray-700 hover:bg-blue-50 hover:text-blue-600 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-lg border border-gray-200 transition-colors"
+            className="flex items-center gap-1.5 bg-white/95 backdrop-blur text-surface-700 hover:bg-brand-50 hover:text-brand-600 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-lg border border-surface-200 transition-colors"
           >
             <ExternalLink size={13} />
             Google Maps
@@ -139,7 +139,7 @@ export default function CarteSRSP() {
             href={urlItineraire}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1.5 bg-blue-600 text-white hover:bg-blue-700 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-lg transition-colors"
+            className="flex items-center gap-1.5 bg-brand-600 text-white hover:bg-brand-700 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-lg transition-colors"
           >
             <Navigation size={13} />
             Itinéraire
@@ -148,9 +148,9 @@ export default function CarteSRSP() {
       </div>
 
       {!pleinEcran && (
-        <div className="px-4 py-2 border-t border-gray-100 bg-gray-50/40">
-          <p className="text-[11px] text-gray-400 leading-relaxed flex items-start gap-1.5">
-            <MapPin size={12} className="mt-0.5 flex-shrink-0 text-blue-500" />
+        <div className="px-4 py-2 border-t border-surface-100 bg-surface-50/40">
+          <p className="text-[11px] text-surface-400 leading-relaxed flex items-start gap-1.5">
+            <MapPin size={12} className="mt-0.5 flex-shrink-0 text-brand-500" />
             Double-cliquez pour zoomer · molette pour naviguer
           </p>
         </div>

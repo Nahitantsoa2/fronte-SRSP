@@ -8,7 +8,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggleTheme}
       title={isDarkMode ? "Mode clair" : "Mode sombre"}
-      className="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-800"
+      className="relative w-10 h-10 flex items-center justify-center rounded-xl text-surface-500 hover:text-surface-700 hover:bg-surface-100 transition-all dark:text-surface-400 dark:hover:text-surface-200 dark:hover:bg-surface-800"
     >
       <div className="relative w-5 h-5">
         <Sun

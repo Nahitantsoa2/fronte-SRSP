@@ -7,11 +7,11 @@ export default function SuiviDossiers() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-surface-50 flex flex-col">
       {/* Navbar */}
       <AppHeader
         icon={<FolderOpen size={20} />}
-        iconClass="from-blue-600 to-cyan-500 shadow-blue-500/20"
+        iconClass="from-brand-600 to-brand-500 shadow-brand-500/20"
         title="Suivi des dossiers"
         subtitle="Consultez l'état d'avancement de vos dossiers"
         onBack={() => navigate("/fonctionnaire")}

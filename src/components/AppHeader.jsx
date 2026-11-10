@@ -5,7 +5,7 @@ import SettingsMenu from "./SettingsMenu";
 
 export default function AppHeader({
   icon,
-  iconClass = "from-slate-600 to-slate-500 shadow-slate-500/20",
+  iconClass = "from-brand-700 to-brand-600 shadow-brand-500/20",
   title,
   subtitle,
   onBack,
@@ -16,7 +16,7 @@ export default function AppHeader({
   const navigate = useNavigate();
 
   return (
-    <header className="bg-white dark:bg-surface-800 shadow-sm border-b border-gray-200 dark:border-surface-700 sticky top-0 z-40">
+    <header className="bg-white dark:bg-surface-800 shadow-sm border-b border-surface-200 dark:border-surface-700 sticky top-0 z-40">
       <div
         className={`${maxWidth} mx-auto px-4 sm:px-6 lg:px-8 min-h-16 py-2 flex flex-wrap items-center justify-between gap-2`}
       >
@@ -26,7 +26,7 @@ export default function AppHeader({
               onClick={onBack ?? (() => navigate(-1))}
               aria-label="Retour"
               title="Retour"
-              className="p-2 rounded-xl text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-surface-700 transition-all"
+              className="p-2 rounded-xl text-surface-400 hover:text-surface-600 hover:bg-surface-100 dark:hover:bg-surface-700 transition-all"
             >
               <ArrowLeft size={20} />
             </button>
@@ -41,12 +41,12 @@ export default function AppHeader({
             )}
             <div className="min-w-0">
               <h1
-                className={`${titleClass} font-bold text-gray-900 dark:text-white leading-tight truncate`}
+                className={`${titleClass} font-bold text-surface-900 dark:text-white leading-tight truncate`}
               >
                 {title}
               </h1>
               {subtitle && (
-                <div className="text-xs text-gray-500 dark:text-surface-400">
+                <div className="text-xs text-surface-500 dark:text-surface-400">
                   {subtitle}
                 </div>
               )}

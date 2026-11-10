@@ -251,7 +251,7 @@ export default function NouvelleDemandeManuelle({ onCreee }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">
+        <label className="block text-xs font-bold text-surface-500 uppercase tracking-wider mb-1.5">
           Type de démarche
         </label>
         <div className="relative">
@@ -260,7 +260,7 @@ export default function NouvelleDemandeManuelle({ onCreee }) {
             value={form.id_type_demarche}
             onChange={handleChange}
             required
-            className="w-full appearance-none px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10 transition-all"
+            className="w-full appearance-none px-4 py-2.5 bg-surface-50 border border-surface-200 rounded-xl text-sm text-surface-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent pr-10 transition-all"
           >
             <option value="">-- Choisir le type --</option>
             {types.map((t) => (
@@ -269,7 +269,7 @@ export default function NouvelleDemandeManuelle({ onCreee }) {
               </option>
             ))}
           </select>
-          <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+          <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-surface-400 pointer-events-none" />
         </div>
       </div>
 
@@ -278,7 +278,7 @@ export default function NouvelleDemandeManuelle({ onCreee }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {activeFields.filter(f => f !== "motif").map((fieldName) => (
               <div key={fieldName}>
-                <label className="block text-xs font-semibold text-gray-500 mb-1 capitalize">
+                <label className="block text-xs font-semibold text-surface-500 mb-1 capitalize">
                   {fieldLabels[fieldName]}
                 </label>
                 <input
@@ -286,7 +286,7 @@ export default function NouvelleDemandeManuelle({ onCreee }) {
                   placeholder={fieldLabels[fieldName]}
                   value={form[fieldName]}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all"
+                  className="w-full px-3 py-2 bg-surface-50 border border-surface-200 rounded-xl text-sm text-surface-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent focus:bg-white transition-all"
                 />
               </div>
             ))}
@@ -294,7 +294,7 @@ export default function NouvelleDemandeManuelle({ onCreee }) {
 
           {activeFields.includes("motif") && (
             <div>
-              <label className="block text-xs font-semibold text-gray-500 mb-1">
+              <label className="block text-xs font-semibold text-surface-500 mb-1">
                 {fieldLabels.motif}
               </label>
               <textarea
@@ -303,7 +303,7 @@ export default function NouvelleDemandeManuelle({ onCreee }) {
                 rows={2}
                 value={form.motif}
                 onChange={handleChange}
-                className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all resize-none font-inherit"
+                className="w-full px-3 py-2 bg-surface-50 border border-surface-200 rounded-xl text-sm text-surface-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent focus:bg-white transition-all resize-none font-inherit"
               />
             </div>
           )}
@@ -318,7 +318,7 @@ export default function NouvelleDemandeManuelle({ onCreee }) {
         </div>
       )}
       {succes && (
-        <div className="flex items-center gap-2 bg-emerald-50 text-emerald-600 px-3 py-2.5 rounded-xl text-sm font-medium border border-emerald-200 animate-fade-in">
+        <div className="flex items-center gap-2 bg-brand-50 text-brand-600 px-3 py-2.5 rounded-xl text-sm font-medium border border-brand-200 animate-fade-in">
           <CheckCircle2 size={16} className="flex-shrink-0" />
           Demande créée avec succès.
         </div>
@@ -329,7 +329,7 @@ export default function NouvelleDemandeManuelle({ onCreee }) {
         <button
           type="submit"
           disabled={envoi || !form.id_type_demarche}
-          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-semibold rounded-xl transition-all border border-gray-200 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-surface-100 hover:bg-surface-200 text-surface-700 text-sm font-semibold rounded-xl transition-all border border-surface-200 disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {envoi ? (
             "Création..."

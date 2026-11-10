@@ -57,10 +57,14 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const config = error.config;
-    const estProbeSession = config?.url === "/moi" || config?.url?.endsWith("/moi");
+    const urlRequete = config?.url || "";
+    const estProbeSession = urlRequete.endsWith("/moi");
+    const estTentativeAuth =
+      urlRequete.endsWith("/login") || urlRequete.endsWith("/register");
 
-    // Redirige vers /login seulement si 401 sur une vraie action utilisateur (pas lors de la vérification initiale)
-    if (error.response?.status === 401 && !estProbeSession) {
+    // Redirige vers /login seulement si 401 sur une vraie action utilisateur
+    // (pas lors de la vérification initiale ni d'un échec de connexion/inscription)
+    if (error.response?.status === 401 && !estProbeSession && !estTentativeAuth) {
       localStorage.removeItem("auth_token");
       localStorage.removeItem("utilisateur");
       window.location.href = "/login";
